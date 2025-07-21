@@ -46,8 +46,10 @@ This repository aims to curate the cutting-edge research and tools in this excit
 - [Tutorials & Documentation](#tutorials--documentation)
 
 ## Papers
-- [Paper Title 1](http://example.com) - Brief description.
-
+| Title 📄                                                     | Method Summary 🛠️                                                                                                                              | Task 🎯                         | Pub or Date 🏛️ | Code 💻                                                              |
+| :----------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------ | :-------------------------------- | :------------- | :------------------------------------------------------------------- |
+| [Structural Pruning for Diffusion Models](https://arxiv.org/abs/2305.10924) |  Diff-Pruning, an efficient compression method tailored for learning lightweight diffusion models from pre-existing ones, without the need for extensive re-training. The essence of Diff-Pruning is encapsulated in a Taylor expansion over pruned timesteps, a process that disregards non-contributory diffusion steps and ensembles informative gradients to identify important weights. | Unconditional Image Generation    | NIPS 2023      | [Github](https://github.com/VainF/Diff-Pruning)                        |
+| [SnapFusion: Text-to-Image Diffusion Model on Mobile Devices within Two Seconds](https://arxiv.org/abs/2306.00980) | We Present a generic approach that, for the first time, unlocks running text-to-image diffusion models on mobile devices in less than 2 seconds. We achieve so by introducing efficient network architecture and improving step distillation. Specifically, we propose an efficient UNet by identifying the redundancy of the original model and reducing the computation of the image decoder via data distillation. Further, we enhance the step distillation by exploring training strategies and introducing regularization from classifier-free guidance.| Text-to-Image                     | NIPS 2023    | [Github](https://github.com/snap-research/SnapFusion)      |
 ## Tools & Libraries
 <!--- [Tool Name 1](http://example.com) - Brief description.-->
 Coming soon!
