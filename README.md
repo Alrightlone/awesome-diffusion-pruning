@@ -20,17 +20,17 @@ In the context of diffusion models, pruning can be categorized into three main t
 
 3.  **Semi-structured Pruning**: Also known as N:M sparsity, this is a hybrid approach that enforces a fine-grained sparsity pattern where N out of a small block of M weights are zeroed out (e.g., 2:4 sparsity). This method offers a compelling balance: it achieves higher compression rates than structured pruning while still mapping efficiently to modern hardware, such as NVIDIA's Ampere and later architectures that have dedicated support for sparse tensor operations.
 
-\subsection*{Pruning: An Orthogonal and Synergistic Approach}
+### Pruning: An Orthogonal and Synergistic Approach
 
 Model pruning fundamentally enhances efficiency by directly targeting architectural redundancy. By eliminating non-essential weights, pruning yields a dual benefit: it significantly **reduces the model's storage footprint** and **decreases the computational load (FLOPs)**, which can accelerate inference.
 
 A key advantage of pruning is its **orthogonal nature** relative to other efficiency techniques. It can be synergistically combined with other methods for compounded gains:
 
-\begin{itemize}
-    \item \textbf{Pruning + Quantization:} A pruned model can be subsequently quantized, applying low-precision numerics to an already smaller architecture for maximum model compression.
-    \item \textbf{Pruning + Faster Samplers:} The reduced per-step cost of a pruned model, when paired with an advanced sampler (e.g., DPM-Solver) that requires fewer steps, results in a substantial decrease in total generation latency.
-    \item \textbf{Pruning + Knowledge Distillation:} Pruning can simplify a large teacher model before distillation or be used to further compress a distilled student model.
-\end{itemize}
+
+- **Pruning + Quantization**: A pruned model can be subsequently quantized, applying low-precision numerics to an already smaller architecture for maximum model compression.
+- **Pruning + Faster Samplers**: The reduced per-step cost of a pruned model, when paired with an advanced sampler (e.g., DPM-Solver) that requires fewer steps, results in a substantial decrease in total generation latency.
+- **Pruning + Knowledge Distillation**: Pruning can simplify a large teacher model before distillation or be used to further compress a distilled student model.
+
 
 This ability to act as a foundational optimization that complements other approaches makes pruning a uniquely powerful and versatile strategy for creating highly efficient diffusion models.
 
