@@ -10,7 +10,7 @@ Among the various efficiency techniques, **Model Pruning** stands out as a parti
 
 ### What is Diffusion Pruning?
 
-**Pruning** is a model compression technique that aims to reduce model size and computational load by introducing sparsity. This is achieved by identifying and removing redundant or less important model weights, effectively setting them to zero. By eliminating these weights, we can significantly decrease the storage footprint and, with appropriate hardware or software support, accelerate inference speed.
+**Pruning** is a model compression technique that aims to reduce model size and computational load by introducing **sparsity**. This is achieved by identifying and removing redundant or less important model weights, effectively **setting them to zero**. By eliminating these weights, we can significantly **decrease the storage footprint** and, with appropriate hardware or software support, **accelerate inference speed**.
 
 In the context of diffusion models, pruning can be categorized into three main types:
 
@@ -20,46 +20,38 @@ In the context of diffusion models, pruning can be categorized into three main t
 
 3.  **Semi-structured Pruning**: Also known as N:M sparsity, this is a hybrid approach that enforces a fine-grained sparsity pattern where N out of a small block of M weights are zeroed out (e.g., 2:4 sparsity). This method offers a compelling balance: it achieves higher compression rates than structured pruning while still mapping efficiently to modern hardware, such as NVIDIA's Ampere and later architectures that have dedicated support for sparse tensor operations.
 
-### Beyond Pruning: Other Efficient Diffusion Techniques
+\subsection*{Pruning: An Orthogonal and Synergistic Approach}
 
-While pruning is a powerful tool, it is part of a broader family of methods designed to make diffusion models more efficient. The primary goals of these techniques are to **speed up inference** (by reducing the number of sampling steps or operations per step) and **reduce storage** (by shrinking the model's memory footprint).
+Model pruning fundamentally enhances efficiency by directly targeting architectural redundancy. By eliminating non-essential weights, pruning yields a dual benefit: it significantly **reduces the model's storage footprint** and **decreases the computational load (FLOPs)**, which can accelerate inference.
 
-Other notable techniques include:
+A key advantage of pruning is its **orthogonal nature** relative to other efficiency techniques. It can be synergistically combined with other methods for compounded gains:
 
-* **Quantization**: Reducing the numerical precision of the model's weights and activations (e.g., from 32-bit floats to 8-bit integers). This shrinks model size and can accelerate inference on supported hardware.
-* **Knowledge Distillation**: Training a smaller, more efficient "student" model to mimic the behavior of a larger, pre-trained "teacher" diffusion model. This can significantly reduce model size and the number of required inference steps.
-* **Neural Architecture Search (NAS)**: Automating the design of more efficient model architectures, finding novel combinations of layers and operations that reduce computational cost while preserving generative quality.
-* **Faster Samplers & Schedulers**: Developing advanced sampling algorithms (e.g., DPM-Solver, DDIM) that can produce high-quality samples in far fewer steps than the original DDPM formulation, directly reducing the latency of the iterative generation process.
+\begin{itemize}
+    \item \textbf{Pruning + Quantization:} A pruned model can be subsequently quantized, applying low-precision numerics to an already smaller architecture for maximum model compression.
+    \item \textbf{Pruning + Faster Samplers:} The reduced per-step cost of a pruned model, when paired with an advanced sampler (e.g., DPM-Solver) that requires fewer steps, results in a substantial decrease in total generation latency.
+    \item \textbf{Pruning + Knowledge Distillation:} Pruning can simplify a large teacher model before distillation or be used to further compress a distilled student model.
+\end{itemize}
 
-### Why Focus on Pruning?
-
-Pruning offers a unique set of advantages that make it a compelling and distinct area of research. While other methods focus on changing the sampling process or numerical precision, pruning directly tackles the intrinsic redundancy of the oversized neural network itself.
-
-Here is a table summarizing its relative strengths:
-
-| Method                 | Primary Goal                                  | Key Advantage of Pruning in Comparison                                                                  | Main Trade-off               |
-| ---------------------- | --------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| **Pruning** | **Reduce model size & FLOPs** | Directly removes redundant parameters, offering a fundamental reduction in model complexity.              | Can require accuracy recovery. |
-| **Quantization** | Reduce model size & accelerate with hardware  | Pruning is orthogonal; a pruned model can also be quantized for even greater compression (compound effect). | Potential for precision loss.  |
-| **Knowledge Distillation** | Create a smaller student model              | Can be applied to an already-trained model without a full, complex distillation process.                | Requires a costly teacher model. |
-| **Faster Samplers** | Reduce the number of inference steps          | Reduces the cost *per step*. It can be combined with faster samplers for maximum speed-up.               | Does not reduce model size.    |
+This ability to act as a foundational optimization that complements other approaches makes pruning a uniquely powerful and versatile strategy for creating highly efficient diffusion models.
 
 ### Pruning Deserves Further Exploration
 
 Given its unique ability to fundamentally reduce model complexity and its orthogonality to other popular methods, **pruning deserves further exploration**. It provides a direct path to smaller, more efficient diffusion models that are cheaper to store and serve. By creating sparsity, pruning opens up new possibilities for hardware acceleration and on-device deployment. As the demand for generative AI grows, a deeper understanding and development of advanced pruning techniques will be critical to making these powerful models accessible and sustainable for everyone.
 
-This repository aims to curate the cutting-edge research and tools in this exciting domain. Contributions are welcome!
+This repository aims to curate the cutting-edge research and tools in this exciting domain. **Contributions are welcome!**
 ## Contents
 
 - [Papers](#papers)
 - [Tools & Libraries](#tools--libraries)
-- [Tutorials & Articles](#tutorials--articles)
+- [Tutorials & Documentation](#tutorials--documentation)
 
 ## Papers
 - [Paper Title 1](http://example.com) - Brief description.
 
 ## Tools & Libraries
-- [Tool Name 1](http://example.com) - Brief description.
+<!--- [Tool Name 1](http://example.com) - Brief description.-->
+Coming soon!
 
 ## Tutorials & Articles
-- [Article Title 1](http://example.com) - Brief description.
+<!--- [Article Title 1](http://example.com) - Brief description.-->
+Coming soon!
